@@ -1,0 +1,33 @@
+---
+# Whether the host is a munin master.
+munin_role_master: yes
+
+# Whether the host is a munin node.
+munin_role_node: yes
+
+munin_package_state: present
+
+# IP of munin master.
+munin_master_ip: 127.0.0.1
+
+# Whether the service must be configured to start on boot.
+munin_node_service_enabled: yes
+
+# Desired state of the service. Set it to 'undef' to skip this setup in Ansible.
+munin_node_service_state: started
+
+# IP of the node in the master. Defaults to {{ ansible_default_ipv4.address }}
+#munin_node_ip: 
+
+# Port where munin node is listening.
+munin_node_port: 4949
+
+# Configuration for node declaration in master.
+munin_node_config:
+  use_node_name: 'yes'
+#  load.load.warning: 5
+#  load.load.critical: 10
+
+# Switch to skip configuration of monit check.
+munin_node_monit_skip: no
+

@@ -1,0 +1,15 @@
+---
+- name: Ensure munin.conf
+  template: src={{ item }} dest={{ munin_master_file_conf }} backup=no owner=root group=root mode=0644
+  first_available_file:
+    - "munin.conf.{{ ansible_os_family }}.j2"
+    - "munin.conf.default.j2"
+  when: munin_role_master == true
+
+#TODO# Ensure directories are present and owner/group/perms.
+
+- name: Declare node in master
+  template: src="munin-host.j2" dest="{{ munin_master_includedir }}/{{ ansible_fqdn }}_{{ munin_node_port }}" backup=no owner=root group=root mode=0644
+  delegate_to: "{{ munin_master_ip }}"
+  when: munin_role_node == true
+

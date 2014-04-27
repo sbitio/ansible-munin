@@ -1,0 +1,8 @@
+---
+- name: Ensure munin-node service is started/stopped
+  service: name={{ munin_node_service }} state={{ munin_node_service_state }}
+  when: munin_node_service_state != 'undef'
+
+- name: Ensure service boot status
+  service: name={{ munin_node_service }} enabled={{ munin_node_service_enabled }}
+

@@ -1,0 +1,14 @@
+# Managed by Ansible
+
+[{{ ansible_fqdn }}]
+{% if munin_node_ip is defined %}
+    address {{ munin_node_ip }}
+{% else %}
+    address {{ ansible_default_ipv4.address }}
+{% endif %}
+    port {{ munin_node_port }}
+
+{% for k, v in munin_node_config.iteritems() %}
+{{  "    %s \t%s"|format(k, v) }}
+{% endfor %}
+

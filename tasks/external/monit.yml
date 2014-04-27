@@ -1,0 +1,7 @@
+---
+- name: Configure munin service in Monit
+  action: monit_check
+  args:
+    type: service
+    name: munin
+

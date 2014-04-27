@@ -1,0 +1,7 @@
+---
+- name: restart munin-node
+  service: name={{ munin_node_service }} state=restarted
+  tags:
+    - munin
+    - service
+

@@ -1,0 +1,6 @@
+---
+- include: external/monit.yml
+  when: monit_service is defined and munin_node_monit_skip != false
+  tags:
+   - monit
+

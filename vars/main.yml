@@ -1,0 +1,14 @@
+---
+munin_node_service: munin-node
+
+munin_master_file_conf: /etc/munin/munin.conf
+
+# Variables for munin.conf
+munin_master_dbdir     : /var/lib/munin
+munin_master_logdir    : /var/log/munin
+munin_master_rundir    : /var/run/munin
+munin_master_tmpldir   : /etc/munin/templates
+munin_master_staticdir : /etc/munin/static
+munin_master_cgitmpdir : /var/lib/munin/cgi-tmp
+munin_master_graph_strategy: cgi
+

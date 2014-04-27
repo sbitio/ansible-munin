@@ -1,0 +1,15 @@
+---
+munin_master_packages:
+ - munin
+ - munin-cgi
+
+munin_node_packages:
+ - munin-node
+ - munin-plugins-core
+ - munin-plugins-extra
+ - libcache-cache-perl
+
+# Variables for munin.conf
+munin_master_htmldir   : /var/cache/munin/www
+munin_master_includedir: /etc/munin/munin-conf.d
+

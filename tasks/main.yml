@@ -1,0 +1,44 @@
+---
+# tasks file for munin.
+
+- name: OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  tags:
+    - munin
+    - setup
+    - service
+    - config
+
+# Debian(setup) specific tasks.
+- include: setup-Debian.yml
+  when: "ansible_os_family == 'Debian'"
+  tags:
+    - munin
+    - setup
+
+# RedHat(setup) specific tasks.
+- include: setup-RedHat.yml
+  when: "ansible_os_family == 'RedHat'"
+  tags:
+    - munin
+    - setup
+
+# Common configuration tasks.
+- include: config.yml
+  tags:
+    - munin
+    - config
+
+# Common service tasks.
+- include: service.yml
+  when: munin_role_node == true
+  tags:
+   - munin
+   - service
+
+# Integration with external services.
+- include: external.yml
+  tags:
+   - munin
+   - external
+
