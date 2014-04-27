@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Jonathan Araña Cruz
+  description: Manage Munin master, nodes and plugins.
+  company: SB IT Media, S.L.
+  license: license BSD
+  min_ansible_version: 1.5
+  platforms:
+  - name: EL
+    versions:
+    - 6.5
+  - name: Debian
+    versions:
+    - Wheezy
+  categories:
+  - monitoring
+dependencies: []
+
