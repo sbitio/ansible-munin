@@ -20,3 +20,10 @@
     - "munin-node.conf.default.j2"
   when: munin_role_node == true
 
+- name: Ensure custom plugins directory
+  file:
+  args:
+    state: directory
+    path: "{{ munin_node_dir_plugins_custom }}"
+  when: munin_role_node == true
+

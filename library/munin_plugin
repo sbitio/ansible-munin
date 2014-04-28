@@ -1,0 +1,15 @@
+DOCUMENTATION = '''
+---
+module: munin_plugin
+options:
+  name:
+    description: The name of the plugin to configure.
+    required: True
+    aliases: []
+  instance:
+    description: Name of the plugin instance. Defaults to {{ name }}. Useful to configure `if_` plugin as `if_eth0`, etc.
+  config:
+    description: String of configuration params for the plugin.
+  file:
+    description: Local path to a plugin file to copy to {{ munin_node_custom_plugins_dir }} in the host. Use this to copy a plugin not available in the OS package.
+'''

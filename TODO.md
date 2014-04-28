@@ -1,4 +1,2 @@
-- Better separation between master and node vars / tasks.
-- Implemente plugins management.
-
+* Option to cleanup plugins and plugins-conf on first install.
 
