@@ -3,6 +3,10 @@ munin_node_service: munin-node
 
 munin_master_file_conf: /etc/munin/munin.conf
 
+munin_node_file_conf: /etc/munin/munin-node.conf
+munin_node_dir_plugins: /etc/munin/plugins
+munin_node_dir_pluginsconf: /etc/munin/plugin-conf.d
+
 # Variables for munin.conf
 munin_master_dbdir     : /var/lib/munin
 munin_master_logdir    : /var/log/munin
@@ -11,4 +15,7 @@ munin_master_tmpldir   : /etc/munin/templates
 munin_master_staticdir : /etc/munin/static
 munin_master_cgitmpdir : /var/lib/munin/cgi-tmp
 munin_master_graph_strategy: cgi
+
+# Variables for munin-node.conf
+munin_node_log_level: 4
 

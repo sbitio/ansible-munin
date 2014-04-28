@@ -22,6 +22,10 @@ munin_node_service_state: started
 # Port where munin node is listening.
 munin_node_port: 4949
 
+# List of ips allowed to connect.
+munin_node_allow:
+  - '^127\.0\.0\.1$'
+
 # Configuration for node declaration in master.
 munin_node_config:
   use_node_name: 'yes'

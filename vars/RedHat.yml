@@ -10,3 +10,7 @@ munin_node_packages:
 munin_master_htmldir   : /var/www/html/munin
 munin_master_includedir: /etc/munin/conf.d
 
+# Variables for munin-node.conf
+munin_node_log_file: /var/log/munin-node/munin-node.log
+munin_node_pid_file: /var/run/munin/munin-node.pid
+

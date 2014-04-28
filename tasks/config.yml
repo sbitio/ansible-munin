@@ -13,3 +13,10 @@
   delegate_to: "{{ munin_master_ip }}"
   when: munin_role_node == true
 
+- name: Ensure munin-node.conf
+  template: src={{ item }} dest={{ munin_node_file_conf }} backup=no owner=root group=root mode=0644
+  first_available_file:
+    - "munin-node.conf.{{ ansible_os_family }}.j2"
+    - "munin-node.conf.default.j2"
+  when: munin_role_node == true
+
