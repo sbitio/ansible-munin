@@ -71,8 +71,8 @@ Following playbook shows several examples of `munin_plugin` usage.
           env.logfile mail.log
 ```
 
-Leverage monit role
--------------------
+Leverage Munin in your roles
+----------------------------
 
 There's two ways to leverage this role in your own roles.
 
