@@ -37,7 +37,7 @@ Default variables are documented in [`defaults/main.yml`](defaults/main.yml).
 
 Role variables are set per OS. See: [`vars/*.yml`](vars/).
 
-See also the params accepted by `munin_plugin` in [`library/munin_plugin`](library/munin_plugin).
+See also the args accepted by `munin_plugin` in [`library/munin_plugin`](library/munin_plugin).
 
 
 Example Usage
