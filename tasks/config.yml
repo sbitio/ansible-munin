@@ -1,7 +1,7 @@
 ---
 - name: Ensure munin.conf
   template: src={{ item }} dest={{ munin_master_file_conf }} backup=no owner=root group=root mode=0644
-  first_available_file:
+  with_first_found:
     - "munin.conf.{{ ansible_os_family }}.j2"
     - "munin.conf.default.j2"
   when: munin_role_master == true
@@ -15,7 +15,7 @@
 
 - name: Ensure munin-node.conf
   template: src={{ item }} dest={{ munin_node_file_conf }} backup=no owner=root group=root mode=0644
-  first_available_file:
+  with_first_found:
     - "munin-node.conf.{{ ansible_os_family }}.j2"
     - "munin-node.conf.default.j2"
   when: munin_role_node == true
