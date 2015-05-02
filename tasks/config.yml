@@ -11,7 +11,7 @@
 - name: Declare node in master
   template: src="munin-host.j2" dest="{{ munin_master_includedir }}/{{ ansible_fqdn }}_{{ munin_node_port }}" backup=no owner=root group=root mode=0644
   delegate_to: "{{ munin_master_ip }}"
-  when: munin_role_node == true
+  when: munin_role_node == true and munin_master_ip != false
 
 - name: Ensure munin-node.conf
   template: src={{ item }} dest={{ munin_node_file_conf }} backup=no owner=root group=root mode=0644
