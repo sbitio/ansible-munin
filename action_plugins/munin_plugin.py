@@ -59,7 +59,7 @@ class ActionModule(object):
 
             inject['instance'] = instance
             inject['config'] = config
-            module_args = 'src=%s dest=%s' % (src, dest)
+            module_args = 'mode=600 src=%s dest=%s' % (src, dest)
             handler = utils.plugins.action_loader.get('template', self.runner)
             return_data = handler.run(conn, tmp, 'template', module_args, inject)
             if return_data.result.has_key('failed'):
