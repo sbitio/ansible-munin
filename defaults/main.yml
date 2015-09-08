@@ -16,8 +16,11 @@ munin_node_service_enabled: yes
 # Desired state of the service. Set it to 'undef' to skip this setup in Ansible.
 munin_node_service_state: started
 
+# Address to bind to. (The "host" configuration directive).
+munin_node_bindto: '*'
+
 # IP of the node in the master. Defaults to {{ ansible_default_ipv4.address }}
-#munin_node_ip: 
+#munin_node_ip:
 
 # Port where munin node is listening.
 munin_node_port: 4949
