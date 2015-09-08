@@ -1,4 +1,4 @@
-import os
+import os,re
 from ansible import utils
 from ansible.utils.template import template
 from ansible.runner.return_data import ReturnData
@@ -36,26 +36,27 @@ class ActionModule(object):
             elif return_data.result['changed']:
                 changed = True
 
-        # Ensure plugin path.
-        if plugin_file is not None:
-            plugin_path = os.path.join(inject['munin_node_dir_plugins_custom'], name)
-        else:
-            plugin_path = os.path.join(inject['munin_node_dir_plugins_share'], name)
+        if name and not '*' in instance:
+            # Ensure plugin path.
+            if plugin_file is not None:
+                plugin_path = os.path.join(inject['munin_node_dir_plugins_custom'], name)
+            else:
+                plugin_path = os.path.join(inject['munin_node_dir_plugins_share'], name)
 
-        # Create symlink to plugin.
-        path = os.path.join(inject['munin_node_dir_plugins'], instance)
-        module_args = 'state=link path=%s src=%s' % (path, plugin_path)
-        return_data = self.runner._execute_module(conn, tmp, 'file', module_args, inject=inject)
-        if return_data.result.has_key('failed'):
-            return return_data
-        elif return_data.result['changed']:
-            changed = True
+            # Create symlink to plugin.
+            path = os.path.join(inject['munin_node_dir_plugins'], instance)
+            module_args = 'state=link path=%s src=%s' % (path, plugin_path)
+            return_data = self.runner._execute_module(conn, tmp, 'file', module_args, inject=inject)
+            if return_data.result.has_key('failed'):
+                return return_data
+            elif return_data.result['changed']:
+                changed = True
 
         # Set plugin configuration.
         if config is not None:
             action_path = utils.plugins.action_loader.find_plugin(module_name)
             src = os.path.realpath(os.path.dirname(action_path) + '/../templates/plugin_conf.j2')
-            dest = os.path.join(inject['munin_node_dir_plugins_conf'], '%s.conf' % (instance))
+            dest = os.path.join(inject['munin_node_dir_plugins_conf'], '%s.conf' % (re.sub(ur"\*", "", instance)))
 
             inject['instance'] = instance
             inject['config'] = config
@@ -76,6 +77,6 @@ class ActionModule(object):
         result = dict()
         result['changed'] = changed
         if changed:
-            result['msg'] = 'Munin plugin %s installed.' % name
+            result['msg'] = 'Munin plugin %s installed.' % ( name if name else instance )
         return ReturnData(conn=conn, comm_ok=True, result=result)
 

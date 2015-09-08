@@ -10,7 +10,7 @@ options:
     required: True
     aliases: []
   instance:
-    description: Name of the plugin instance. Defaults to {{ name }}. Useful to configure `if_` plugin as `if_eth0`, etc.
+    description: Name of the plugin instance. Defaults to {{ name }}. Useful to configure `if_` plugin as `if_eth0`, etc. If it contains '*', no plugin symlinking will happen, but this will be used as the configuration section's name.
   config:
     description: String of configuration params for the plugin.
   file:
