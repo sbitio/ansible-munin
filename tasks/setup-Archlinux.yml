@@ -1,0 +1,11 @@
+---
+- name: Ensure munin master pacman packages
+  pacman: pkg={{ item }} state={{ munin_package_state }} update_cache=yes
+  with_items: munin_master_packages
+  when: munin_role_master == true
+
+- name: Ensure munin node pacman packages
+  pacman: pkg={{ item }} state={{ munin_package_state }} update_cache=yes
+  with_items: munin_node_packages
+  when: munin_role_node == true
+

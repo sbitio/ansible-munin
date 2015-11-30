@@ -1,0 +1,17 @@
+---
+munin_master_packages:
+ - munin
+
+munin_node_packages:
+ - munin-node
+
+# Variables for munin.conf
+munin_master_htmldir   : /usr/share/munin/www
+munin_master_includedir: /etc/munin/munin-conf.d
+
+# Variables for munin-node.conf
+munin_node_log_file: /var/log/munin/munin-node.log
+munin_node_pid_file: /var/run/munin/munin-node.pid
+
+munin_node_dir_plugins_share: /usr/lib/munin/plugins
+munin_node_dir_plugins_custom: /usr/local/munin/lib/plugins
