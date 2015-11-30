@@ -12,6 +12,10 @@ galaxy_info:
   - name: Debian
     versions:
     - Wheezy
+  - name: Archlinux
+    versions:
+    - all
+    - any
   categories:
   - monitoring
 dependencies: []

@@ -30,6 +30,13 @@
     - munin
     - setup
 
+# Archlinux(setup) specific tasks.
+- include: setup-Archlinux.yml
+  when: "ansible_os_family == 'Archlinux'"
+  tags:
+    - munin
+    - setup
+
 # Common configuration tasks.
 - include: config.yml
   tags:
