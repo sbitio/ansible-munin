@@ -1,7 +1,6 @@
 ---
 munin_master_packages:
  - munin
- - munin-cgi
 
 munin_node_packages:
  - munin-node
