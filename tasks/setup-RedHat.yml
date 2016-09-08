@@ -1,11 +1,11 @@
 ---
 - name: Ensure munin master yum packages
   yum: pkg={{ item }} state={{ munin_package_state }}
-  with_items: munin_master_packages
+  with_items: "{{munin_master_packages}}"
   when: munin_role_master == true
 
 - name: Ensure munin node yum packages
   yum: pkg={{ item }} state={{ munin_package_state }}
-  with_items: munin_node_packages
+  with_items: "{{munin_node_packages}}"
   when: munin_role_node == true
 
